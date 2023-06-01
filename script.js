@@ -48,54 +48,41 @@ const aliens = [
     image: "insectoide.png",
     description: "Insectóide é um inseto com quatro longas pernas, e dois braços com mãos pretas, dando uma impressão de que está usando luvas, e três dedos em cada um delas. Sua cabeça é completamente preta, e nela estão ligados quatro olhos pequenos e laranjas."
     },
-    // Add more aliens here...
   ];
+
+  let indexAtual = 0;
   
-let currentIndex = 0;
-
-const alienCard = document.getElementById("alien-card");
-const alienImage = document.getElementById("alien-image");
-const alienName = document.getElementById("alien-name");
-const alienDescription = document.getElementById("alien-description");
-const prevButton = document.getElementById("prev-button");
-const nextButton = document.getElementById("next-button");
-
-function showAlien(index) {
-  const alien = aliens[index];
-  alienImage.src = alien.image;
-  alienImage.alt = alien.name;
-  alienName.textContent = alien.name;
-  alienDescription.textContent = alien.description;
-}
-
-function showPrevAlien() {
-  currentIndex = (currentIndex - 1 + aliens.length) % aliens.length;
-  showAlien(currentIndex);
-}
-
-function showNextAlien() {
-  currentIndex = (currentIndex + 1) % aliens.length;
-  showAlien(currentIndex);
-}
-
-prevButton.addEventListener("click", showPrevAlien);
-nextButton.addEventListener("click", showNextAlien);
-
-showAlien(currentIndex);
-
-const searchInput = document.getElementById('search-input');
-const alienCards = document.querySelectorAll('.alien-card');
-
-searchInput.addEventListener('input', function () {
-  const searchTerm = searchInput.value.toLowerCase();
+  function displayAlien(index) {
+      const alienCard = document.getElementById("alien-card");
+      const alien = aliens[index];
   
-  alienCards.forEach(function (card) {
-    const alienName = card.querySelector('h2').textContent.toLowerCase();
-    
-    if (alienName.includes(searchTerm)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-});
+      alienCard.innerHTML = `
+          <img src="${alien.image}" alt="${alien.name}">
+          <h2>${alien.name}</h2>
+          <p>${alien.description}</p>
+          <div class="button-container">
+              <button id="prev-button">Anterior</button>
+              <button id="next-button">Próximo</button>
+          </div>
+      `;
+  
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+  
+      prevButton.addEventListener("click", () => showPrevAlien());
+      nextButton.addEventListener("click", (
+      
+      ) => showNextAlien());
+  }
+  
+  function showPrevAlien() {
+      indexAtual = (indexAtual - 1 + aliens.length) % aliens.length;
+      displayAlien(indexAtual);
+  }
+  
+  function showNextAlien() {
+      indexAtual = (indexAtual + 1) % aliens.length;
+      displayAlien(indexAtual);
+  }
+  
+  displayAlien(0);
