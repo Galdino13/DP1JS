@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom, #5ede00, #337800);
+}
+
+h1 {
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  color: #333;
+  margin-top: 0;
+}
+
+.alien-card {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.alien-card img {
+    width: 100%;
+    height: 20em; /* Defina a altura desejada para as imagens */
+    object-fit: cover;
+  }
+.alien-card h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.alien-card p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.navigation {
+  margin-top: 10px;
+}
